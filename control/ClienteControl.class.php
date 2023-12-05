@@ -26,6 +26,38 @@ class ClienteControl {
         return $clientes;
     }
 
+    public function listarObj() {
+        $sql = "SELECT * FROM clientes";
+        $result = $this->conexao->query($sql);
+        $clientes = array();
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $id = $row['id_cliente'];
+                $clientes[] = $row;
+            }
+        }
+
+        $sql = "SELECT * FROM pessoas";
+        $result = $this->conexao->query($sql);
+        $pessoas = array();
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                foreach ($clientes as $cliente) {
+                    if ($row['id_pessoa'] == $cliente['id_cliente']) {
+                        $pessoas[] = $row;
+                    }
+                }
+            }
+        }
+
+        $clientesPessoas = array();
+        for ($i = 0; $i < array_length($pessoas); $i++) { 
+            $clientesPessoas[] = new Cliente($pessoas[$i]['nome']);
+        }
+    }
+
 
     public function atualizar($obj) {        
 
