@@ -2,7 +2,7 @@
 require_once 'Pessoa.class.php';
 
 class Mecanico extends Pessoa {
-    private $id_mecanico;
+    //private $id_mecanico;
     private $salario;
     private $cargo;
     private $especializacao;
@@ -14,12 +14,14 @@ class Mecanico extends Pessoa {
         $this->especializacao = $especializacao;        
     }
 
+    /*
     function getId() {
         return $this->id_mecanico;
     }
     function setId($id_mecanico) {
         return $this->id_mecanico = $id_mecanico;
     }
+    */
 
     function getSalario() {
         return $this->salario;

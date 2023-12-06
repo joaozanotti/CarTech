@@ -9,11 +9,38 @@ $db = new Database("localhost", "root", "", "mecanica");
 $clienteControl = new ClienteControl($db);
 $mecanicoControl = new MecanicoControl($db);
 
-$cliente = $clienteControl->buscarPorId(1);
-$cliente->toPrint();
-echo "<br><br>";
-$mecanico = $mecanicoControl->buscarPorId(2);
-$mecanico->toPrint();
+$vetClientes = $clienteControl->listarObj();
+foreach ($vetClientes as $cliente) {
+   print_r($cliente);
+   echo "<br><br>";
+}
+
+$vetMecanicos = $mecanicoControl->listarObj();
+foreach ($vetMecanicos as $mecanico) {
+   print_r($mecanico);
+   echo "<br><br>";
+}
+
+
+$mecanico = new Mecanico("Eduardo Janz", "666.777.888-99", "(11)96385-2741", "Rua São Paulo, São Paulo - SP", 6000, "Chefe", "Motor a diesel");
+$mecanico->setId(4);
+
+if ($mecanicoControl->atualizar($mecanico)) {
+   echo "Mecânico atualizado com sucesso.";
+} else {
+   echo "Erro! Informações inválidas.";
+}
+
+
+/* Deletando
+$mecanico = $mecanicoControl->buscarPorId(12);
+$mecanicoControl->deletar($mecanico);
+*/
+
+
+// echo "<br><br>";
+// $mecanico = $mecanicoControl->buscarPorId(2);
+// $mecanico->toPrint();
 
 /*
 $userControl = new UsuarioControl($db);
