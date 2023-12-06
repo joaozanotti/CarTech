@@ -3,7 +3,6 @@
 class ClienteControl {
     private $conexao;
     //private $cliente;
-    //private $id;
 
     function __construct($conexao) {
         $this->conexao = $conexao;
@@ -55,7 +54,12 @@ class ClienteControl {
         if (count($clientes) != 0 && count($pessoas) != 0) {
             $clientesPessoas = array();
             for ($i = 0; $i < count($pessoas); $i++) { 
-                $clientesPessoas[$i] = new Cliente($pessoas[$i]['nome'], $pessoas[$i]['cpf'], $pessoas[$i]['telefone'], $pessoas[$i]['endereco'], $clientes[$i]['formaPagamento']);
+                $clientesPessoas[$i] = new Cliente(
+                    $pessoas[$i]['nome'], 
+                    $pessoas[$i]['cpf'], 
+                    $pessoas[$i]['telefone'], 
+                    $pessoas[$i]['endereco'], 
+                    $clientes[$i]['formaPagamento']);
                 $clientesPessoas[$i]->setId($pessoas[$i]['id_pessoa']);
             }
             return $clientesPessoas;
@@ -131,7 +135,13 @@ class ClienteControl {
 
         // Criando o cliente com todos os dados
         if ($dadosPessoa != "" && $dadosCliente != "") {
-            $cliente = new Cliente($dadosPessoa['nome'], $dadosPessoa['cpf'], $dadosPessoa['telefone'], $dadosPessoa['endereco'], $dadosCliente['formaPagamento']);
+            $cliente = new Cliente(
+                $dadosPessoa['nome'], 
+                $dadosPessoa['cpf'], 
+                $dadosPessoa['telefone'], 
+                $dadosPessoa['endereco'], 
+                $dadosCliente['formaPagamento']
+            );
             $cliente->setId($dadosPessoa['id_pessoa']);
             return $cliente;
         }

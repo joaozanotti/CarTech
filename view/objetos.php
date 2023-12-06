@@ -1,27 +1,25 @@
 <?php
-include "../model/Database.class.php";
-include '../model/Cliente.class.php';
-include '../model/Mecanico.class.php';
-include '../control/ClienteControl.class.php';
-include '../control/MecanicoControl.class.php';
-
-$db = new Database("localhost", "root", "", "mecanica");   
-$clienteControl = new ClienteControl($db);
-$mecanicoControl = new MecanicoControl($db);
+require_once 'public.php';
 
 $vetClientes = $clienteControl->listarObj();
 foreach ($vetClientes as $cliente) {
-   print_r($cliente);
+   $cliente->toPrint();
    echo "<br><br>";
 }
 
 $vetMecanicos = $mecanicoControl->listarObj();
 foreach ($vetMecanicos as $mecanico) {
-   print_r($mecanico);
+   $mecanico->toPrint();
    echo "<br><br>";
 }
 
+$vetServicos = $servicoControl->listarObj();
+foreach ($vetServicos as $servico) {
+   $servico->toPrint();
+   echo "<br><br>";
+}
 
+/* Atualizando
 $mecanico = new Mecanico("Eduardo Janz", "666.777.888-99", "(11)96385-2741", "Rua São Paulo, São Paulo - SP", 6000, "Chefe", "Motor a diesel");
 $mecanico->setId(4);
 
@@ -30,7 +28,7 @@ if ($mecanicoControl->atualizar($mecanico)) {
 } else {
    echo "Erro! Informações inválidas.";
 }
-
+*/
 
 /* Deletando
 $mecanico = $mecanicoControl->buscarPorId(12);

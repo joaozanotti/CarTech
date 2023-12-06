@@ -8,10 +8,10 @@ class Servico {
     private $valor;
     private $data_hora;
     private $tempo_duracao;
-    public Cliente $cliente;
-    public Mecanico $mecanico;
+    private Cliente $cliente;
+    private Mecanico $mecanico;
 
-    function __construct($tipo = "", $valor = "", $data_hora = "", $tempo_duracao = "", $cliente = "", $mecanico = "") {
+    function __construct($tipo = "", $valor = "", $data_hora = "", $tempo_duracao = "", $cliente, $mecanico) {
         $this->tipo = $tipo;
         $this->valor = $valor;
         $this->data_hora = $data_hora;
@@ -53,6 +53,20 @@ class Servico {
     }
     function setTempo($tempo_duracao) {
         return $this->tempo_duracao = $tempo_duracao;
+    }
+
+    function getCliente() {
+        return $this->cliente;
+    }
+    function setCliente($cliente) {
+        return $this->cliente = $cliente;
+    }
+
+    function getMecanico() {
+        return $this->mecanico;
+    }
+    function setMecanico($mecanico) {
+        return $this->mecanico = $mecanico;
     }
 
     function toString() {

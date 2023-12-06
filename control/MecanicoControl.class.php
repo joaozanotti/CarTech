@@ -4,8 +4,6 @@ class MecanicoControl {
     private $conexao;
     //private $mecanico;
 
-    //private $id;
-
     function __construct($conexao) {
         $this->conexao = $conexao;
         //$mecanico = new Mecanico();
@@ -56,7 +54,15 @@ class MecanicoControl {
         if (count($mecanicos) != 0 && count($pessoas) != 0) {
             $mecanicosPessoas = array();
             for ($i = 0; $i < count($pessoas); $i++) {
-                $mecanicosPessoas[$i] = new Mecanico($pessoas[$i]['nome'], $pessoas[$i]['cpf'], $pessoas[$i]['telefone'], $pessoas[$i]['endereco'], $mecanicos[$i]['salario'], $mecanicos[$i]['cargo'], $mecanicos[$i]['especializacao']);
+                $mecanicosPessoas[$i] = new Mecanico(
+                    $pessoas[$i]['nome'], 
+                    $pessoas[$i]['cpf'], 
+                    $pessoas[$i]['telefone'], 
+                    $pessoas[$i]['endereco'], 
+                    $mecanicos[$i]['salario'], 
+                    $mecanicos[$i]['cargo'], 
+                    $mecanicos[$i]['especializacao']
+                );
                 $mecanicosPessoas[$i]->setId($pessoas[$i]['id_pessoa']);
             }
     
@@ -132,7 +138,15 @@ class MecanicoControl {
 
         // Criando o mecânico com todos os dados
         if ($dadosPessoa != "" && $dadosMecanico != "") {
-            $mecanico = new Mecanico($dadosPessoa['nome'], $dadosPessoa['cpf'], $dadosPessoa['telefone'], $dadosPessoa['endereco'], $dadosMecanico['salario'], $dadosMecanico['cargo'], $dadosMecanico['especializacao']);
+            $mecanico = new Mecanico(
+                $dadosPessoa['nome'], 
+                $dadosPessoa['cpf'], 
+                $dadosPessoa['telefone'], 
+                $dadosPessoa['endereco'], 
+                $dadosMecanico['salario'], 
+                $dadosMecanico['cargo'], 
+                $dadosMecanico['especializacao']
+            );
             $mecanico->setId($dadosPessoa['id_pessoa']);
             return $mecanico;
         }
