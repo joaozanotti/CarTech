@@ -7,7 +7,7 @@ class Cliente extends Pessoa {
 
     function __construct($nome = "", $cpf = "", $telefone = "", $endereco = "", $formaPagamento = "") {
         parent::__construct($nome, $cpf, $telefone, $endereco);
-        $this->formaPagamento = $formaPagamento;        
+        $this->formaPagamento = $formaPagamento;
     }
     /*
     function getId() {

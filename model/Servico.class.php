@@ -34,13 +34,6 @@ class Servico {
         return $this->tipo = $tipo;
     }
 
-    function getCpf() {
-        return $this->cpf;
-    }
-    function setCpf($cpf) {
-        return $this->cpf = $cpf;
-    }
-
     function getValor() {
         return $this->valor;
     }

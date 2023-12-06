@@ -9,9 +9,9 @@ class Mecanico extends Pessoa {
 
     function __construct($nome = "", $cpf = "", $telefone = "", $endereco = "", $salario = "", $cargo = "", $especializacao = "") {
         parent::__construct($nome, $cpf, $telefone, $endereco);
-        $this->salario = $salario;        
-        $this->cargo = $cargo;        
-        $this->especializacao = $especializacao;        
+        $this->salario = $salario;
+        $this->cargo = $cargo;
+        $this->especializacao = $especializacao;
     }
 
     /*
