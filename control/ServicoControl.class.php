@@ -65,7 +65,7 @@ class ServicoControl {
     }
 
     public function cadastrar($obj) {
-        if ($obj instanceof Servico) { 
+        if ($obj instanceof Servico) {
             $sql = "INSERT INTO servicos (tipo, valor, data_hora, tempo_duracao, id_cliente, id_mecanico) VALUES ('".$obj->getTipo()."', '".$obj->getValor()."', ".$obj->getData().", '".$obj->getTempo()."', '".$obj->getCliente()->getId()."', '".$obj->getMecanico()->getId()."')";
             $result = $this->conexao->query($sql);
 
