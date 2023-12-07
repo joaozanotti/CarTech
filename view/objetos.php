@@ -19,14 +19,15 @@ foreach ($vetServicos as $servico) {
    echo "<br><br>";
 }
 
-
+/*
 $cliente = $mecanicoControl->buscarPorCpf('999.888.777-6');
 print_r($cliente);
 if ($cliente == null) {
-   echo "cu";
+   echo "falha";
 } else {
-   echo "pau";
+   echo "sucesso";
 }
+*/
 
 /*
 $mecanico = $mecanicoControl->buscarPorId(2);
