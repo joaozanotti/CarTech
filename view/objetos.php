@@ -6,18 +6,26 @@ foreach ($vetClientes as $cliente) {
    $cliente->toPrint();
    echo "<br><br>";
 }
-
+echo "<hr>";
 $vetMecanicos = $mecanicoControl->listarObj();
 foreach ($vetMecanicos as $mecanico) {
    $mecanico->toPrint();
    echo "<br><br>";
 }
-
+echo "<hr>";
 $vetServicos = $servicoControl->listarObj();
 foreach ($vetServicos as $servico) {
    $servico->toPrint();
    echo "<br><br>";
 }
+
+/*
+$servico = $servicoControl->buscarPorId(1);
+print_r($servico->getData());
+$servico->setData("");
+print_r($servico->getData());
+$servicoControl->atualizar($servico);
+*/
 
 /*
 $cliente = $mecanicoControl->buscarPorCpf('999.888.777-6');

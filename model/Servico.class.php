@@ -48,8 +48,12 @@ class Servico {
     function getData() {
         return $this->data_hora;
     }
-    function setData($data_hora) {
-        return $this->data_hora = $data_hora;
+    function setData($data_hora = "") {
+        if ($data_hora == "") {
+            return $this->data_hora = 'NOW()';
+        } else {
+            return $this->data_hora = $data_hora;
+        }
     }
 
     function getTempo() {
@@ -78,8 +82,8 @@ class Servico {
         "<br>Valor: ". $this->valor .
         "<br>Data e hora: " . $this->data_hora .
         "<br>Tempo de duração: " . $this->tempo_duracao .
-        "<br>Cliente: " . $this->cliente->toString() .
-        "<br>Mecânico responsável: " . $this->mecanico->toString();
+        "<br><br>Cliente:<br>" . $this->cliente->toString() .
+        "<br><br>Mecânico responsável:<br>" . $this->mecanico->toString();
     }
 
     function toPrint() {
