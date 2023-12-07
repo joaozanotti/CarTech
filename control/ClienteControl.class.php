@@ -122,15 +122,55 @@ class ClienteControl {
 
         if ($result->num_rows > 0) {
             $dadosPessoa = $result->fetch_assoc();
-        }
 
-        // Buscando dados da tabela de clientes
-        $sql = "SELECT * FROM clientes WHERE id_cliente = $id";
+            $sql = "SELECT * FROM clientes WHERE id_cliente = $id";
+            $result = $this->conexao->query($sql);
+            $dadosCliente = "";
+
+            if ($result->num_rows > 0) {
+                $dadosCliente = $result->fetch_assoc();
+            } else {
+                $dadosCliente = "";
+            }
+        } else {
+            $dadosPessoa = "";
+        }
+        
+        // Criando o cliente com todos os dados
+        if ($dadosPessoa != "" && $dadosCliente != "") {
+            $cliente = new Cliente(
+                $dadosPessoa['nome'], 
+                $dadosPessoa['cpf'], 
+                $dadosPessoa['telefone'], 
+                $dadosPessoa['endereco'], 
+                $dadosCliente['formaPagamento']
+            );
+            $cliente->setId($dadosPessoa['id_pessoa']);
+            return $cliente;
+        }
+        return null;
+    }
+
+    public function buscarPorCpf($cpf) {
+        // Buscando dados da tabela de pessoas
+        $sql = "SELECT * FROM pessoas WHERE cpf='$cpf'";
         $result = $this->conexao->query($sql);
-        $dadosCliente = "";
+        $dadosPessoa = "";
 
         if ($result->num_rows > 0) {
-            $dadosCliente = $result->fetch_assoc();
+            $dadosPessoa = $result->fetch_assoc();
+
+            $sql = "SELECT * FROM clientes WHERE id_cliente = ".$dadosPessoa['id_pessoa']."";
+            $result = $this->conexao->query($sql);
+            $dadosCliente = "";
+
+            if ($result->num_rows > 0) {
+                $dadosCliente = $result->fetch_assoc();
+            } else {
+                $dadosCliente = "";
+            }
+        } else {
+            $dadosPessoa = "";
         }
 
         // Criando o cliente com todos os dados

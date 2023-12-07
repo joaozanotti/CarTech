@@ -28,7 +28,7 @@ class ServicoControl {
             $vetServicos = array();
             for ($i = 0; $i < count($servicos); $i++) { 
                 $vetServicos[$i] = new Servico(
-                    $servicos[$i]['tipo'], 
+                    $servicos[$i]['tipo'],
                     $servicos[$i]['valor'], 
                     $servicos[$i]['data_hora'], 
                     $servicos[$i]['tempo_duracao'], 
@@ -42,15 +42,11 @@ class ServicoControl {
         return null;
     }
 
-
     public function atualizar($obj) {        
-        if ($obj instanceof Cliente) {
-            $sql = "UPDATE pessoas SET nome='".$obj->getNome()."', cpf='".$obj->getCpf()."', telefone='".$obj->getTelefone()."', endereco='".$obj->getEndereco()."' WHERE id_pessoa='".$obj->getId()."'";
+        if ($obj instanceof Servico) {
+            $sql = "UPDATE servicos SET tipo='".$obj->getTipo()."', valor='".$obj->getValor()."', data_hora='".$obj->getData()."', tempo_duracao='".$obj->getData()."', id_cliente='".$obj->getCliente()->getId()."', id_mecanico='".$obj->getMecanico()->getId()."' WHERE id_servico='".$obj->getId()."'";
             $result = $this->conexao->query($sql);
-
             if ($result) {
-                $sql = "UPDATE clientes SET formaPagamento='".$obj->getPagamento()."' WHERE id_cliente='".$obj->getId()."'";
-                $result = $this->conexao->query($sql);
                 return true;
             }
         }
@@ -58,31 +54,22 @@ class ServicoControl {
     }
 
     public function deletar($obj) {   
-        if ($obj instanceof Cliente) {     
-            $sql = "DELETE FROM clientes WHERE id_cliente='".$obj->getId()."'";
+        if ($obj instanceof Servico) {     
+            $sql = "DELETE FROM servicos WHERE id_servico='".$obj->getId()."'";
             $result = $this->conexao->query($sql);
-
             if ($result) {
-                $sql = "DELETE FROM pessoas WHERE id_pessoa='".$obj->getId()."'";
-                $result = $this->conexao->query($sql);
                 return true;
             }
         }
         return false;
     }
 
-    public function cadastrar($obj) {  
-        if ($obj instanceof Cliente) {      
-            $sql = "INSERT INTO pessoas (nome, cpf, telefone, endereco) VALUES ('".$obj->getNome()."', '".$obj->getCpf()."', '".$obj->getTelefone()."', '" .$obj->getEndereco()."')";
+    public function cadastrar($obj) {
+        if ($obj instanceof Servico) { 
+            $sql = "INSERT INTO servicos (tipo, valor, data_hora, tempo_duracao, id_cliente, id_mecanico) VALUES ('".$obj->getTipo()."', '".$obj->getValor()."', ".$obj->getData().", '".$obj->getTempo()."', '".$obj->getCliente()->getId()."', '".$obj->getMecanico()->getId()."')";
             $result = $this->conexao->query($sql);
 
             if ($result) {
-                $sql = "SELECT id_pessoa FROM pessoas WHERE cpf = '".$obj->getCpf()."'";
-                $result = $this->conexao->query($sql);
-                $lastAdd = $result->fetch_assoc();
-
-                $sql = "INSERT INTO clientes (id_cliente, formaPagamento) VALUES ('".$lastAdd['id_pessoa']."', '".$obj->getPagamento()."')";
-                $result = $this->conexao->query($sql);
                 return true;
             }
         }

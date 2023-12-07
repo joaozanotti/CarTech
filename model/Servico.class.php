@@ -14,7 +14,11 @@ class Servico {
     function __construct($tipo = "", $valor = "", $data_hora = "", $tempo_duracao = "", $cliente, $mecanico) {
         $this->tipo = $tipo;
         $this->valor = $valor;
-        $this->data_hora = $data_hora;
+        if ($data_hora == "") {
+            $this->data_hora = 'NOW()';
+        } else {
+            $this->data_hora = $data_hora;
+        }
         $this->tempo_duracao = $tempo_duracao;
         $this->cliente = $cliente;
         $this->mecanico = $mecanico;

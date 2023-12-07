@@ -125,18 +125,60 @@ class MecanicoControl {
 
         if ($result->num_rows > 0) {
             $dadosPessoa = $result->fetch_assoc();
-        }
 
-        // Buscando dados da tabela de mecânicos
-        $sql = "SELECT * FROM mecanicos WHERE id_mecanico = $id";
-        $result = $this->conexao->query($sql);
-        $dadosMecanico = "";
+            $sql = "SELECT * FROM mecanicos WHERE id_mecanico = $id";
+            $result = $this->conexao->query($sql);
+            $dadosMecanico = "";
 
-        if ($result->num_rows > 0) {
-            $dadosMecanico = $result->fetch_assoc();
+            if ($result->num_rows > 0) {
+                $dadosMecanico = $result->fetch_assoc();
+            } else {
+                $dadosMecanico = "";
+            }
+        } else {
+            $dadosPessoa = "";
         }
 
         // Criando o mecânico com todos os dados
+        if ($dadosPessoa != "" && $dadosMecanico != "") {
+            $mecanico = new Mecanico(
+                $dadosPessoa['nome'], 
+                $dadosPessoa['cpf'], 
+                $dadosPessoa['telefone'], 
+                $dadosPessoa['endereco'], 
+                $dadosMecanico['salario'], 
+                $dadosMecanico['cargo'], 
+                $dadosMecanico['especializacao']
+            );
+            $mecanico->setId($dadosPessoa['id_pessoa']);
+            return $mecanico;
+        }
+        return null;
+    }
+
+    public function buscarPorCpf($cpf) {
+        // Buscando dados da tabela de pessoas
+        $sql = "SELECT * FROM pessoas WHERE cpf='$cpf'";
+        $result = $this->conexao->query($sql);
+        $dadosPessoa = "";
+
+        if ($result->num_rows > 0) {
+            $dadosPessoa = $result->fetch_assoc();
+
+            $sql = "SELECT * FROM mecanicos WHERE id_mecanico = ".$dadosPessoa['id_pessoa']."";
+            $result = $this->conexao->query($sql);
+            $dadosMecanico = "";
+    
+            if ($result->num_rows > 0) {
+                $dadosMecanico = $result->fetch_assoc();
+            } else {
+                $dadosMecanico = "";
+            }
+        } else {
+            $dadosPessoa = "";
+        }
+
+        // Criando o cliente com todos os dados
         if ($dadosPessoa != "" && $dadosMecanico != "") {
             $mecanico = new Mecanico(
                 $dadosPessoa['nome'], 

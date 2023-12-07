@@ -19,6 +19,28 @@ foreach ($vetServicos as $servico) {
    echo "<br><br>";
 }
 
+
+$cliente = $mecanicoControl->buscarPorCpf('999.888.777-6');
+print_r($cliente);
+if ($cliente == null) {
+   echo "cu";
+} else {
+   echo "pau";
+}
+
+/*
+$mecanico = $mecanicoControl->buscarPorId(2);
+print_r($mecanico);
+$servico = new Servico("Troca de óleo", 200.00, "", "30min", $cliente, $mecanico);
+print_r($servico);
+
+if ($servicoControl->cadastrar($servico)) {
+   echo "cu";
+} else {
+   echo "pau";
+}
+*/
+
 /* Atualizando
 $mecanico = new Mecanico("Eduardo Janz", "666.777.888-99", "(11)96385-2741", "Rua São Paulo, São Paulo - SP", 6000, "Chefe", "Motor a diesel");
 $mecanico->setId(4);
