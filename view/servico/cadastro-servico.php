@@ -1,7 +1,7 @@
 <?php
-$urlServico = substr($_SERVER['PHP_SELF'], 40);
+$msg = @$_GET['result'];
 
-echo '<form action="../cadastro.php?url='.$urlServico.'" method="post">
+echo '<form action="../cadastro.php?url=servico" method="post">
         <h1>Cadastrar serviços</h1>
         <p>
             <label for="tipo">Tipo:</label>
@@ -9,11 +9,7 @@ echo '<form action="../cadastro.php?url='.$urlServico.'" method="post">
         </p>
         <p>
             <label for="valor">Valor:</label>
-            <input type="text" id="valor" name="valor" required>
-        </p>
-        <p>
-            <label for="dataHora">Data e hora:</label>
-            <input type="text" id="dataHora" name="dataHora" required>
+            <input type="number" id="valor" name="valor" required>
         </p>
         <p>
             <label for="tempoDuracao">Tempo de duração:</label>
@@ -21,7 +17,7 @@ echo '<form action="../cadastro.php?url='.$urlServico.'" method="post">
         </p>
         <p>
             <label for="cpfCliente">CPF do cliente:</label>
-            <input type="number" id="cpfCliente" name="cpfCliente" required>
+            <input type="text" id="cpfCliente" name="cpfCliente" required>
         </p>
         <p>
             <label for="cpfMecanico">CPF do mecânico:</label>
@@ -30,4 +26,11 @@ echo '<form action="../cadastro.php?url='.$urlServico.'" method="post">
 
         <input type="submit" value="Cadastrar">
     </form>';
+    if ($msg == "erroInfo") {
+        echo "Erro! Informações do serviço inválidas.";
+    } else if ($msg == "erroPessoa") {
+        echo "Erro! CPF do cliente ou do mecânico inválido(s).";
+    } else if ($msg == "sucesso") {
+        echo "Serviço cadastrado com sucesso!";
+    }
 ?>

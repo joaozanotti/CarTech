@@ -1,7 +1,7 @@
 <?php
-$urlMecanico = substr($_SERVER['PHP_SELF'], 41);
+$msg = @$_GET['result'];
 
-echo '<form action="../cadastro.php?url='.$urlMecanico.'" method="post">
+echo '<form action="../cadastro.php?url=mecanico" method="post">
         <h1>Cadastrar mecânicos</h1>
         <p>
             <label for="nome">Nome:</label>
@@ -34,4 +34,11 @@ echo '<form action="../cadastro.php?url='.$urlMecanico.'" method="post">
 
         <input type="submit" value="Cadastrar">
     </form>';
+    if ($msg == "erroInfo") {
+        echo "Erro! Informações inválidas.";
+    } else if ($msg == "erroPessoa") {
+        echo "Erro! Mecânico já cadastrado.";
+    } else if ($msg == "sucesso") {
+        echo "Mecânico cadastrado com sucesso!";
+    }
 ?>

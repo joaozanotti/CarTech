@@ -1,7 +1,7 @@
 <?php
-$urlCliente = substr($_SERVER['PHP_SELF'], 40);
+$msg = @$_GET['result'];
 
-echo '<form action="../cadastro.php?url='.$urlCliente.'" method="post">
+echo '<form action="../cadastro.php?url=cliente" method="post">
         <h1>Cadastrar clientes</h1>
         <p>
             <label for="nome">Nome:</label>
@@ -27,4 +27,11 @@ echo '<form action="../cadastro.php?url='.$urlCliente.'" method="post">
             <input type="submit" value="Cadastrar">
         </p>
     </form>';
+    if ($msg == "erroInfo") {
+        echo "Erro! Informações inválidas.";
+    } else if ($msg == "erroPessoa") {
+        echo "Erro! Cliente já cadastrado.";
+    } else if ($msg == "sucesso") {
+        echo "Cliente cadastrado com sucesso!";
+    }
 ?>
