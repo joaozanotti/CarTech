@@ -13,6 +13,24 @@ function criaHeader($titulo) {
                         font-size: 20px;
                         margin-right: 6px;
                     }
+
+                    .form-error {
+                        background-color: rgb(250, 189, 189);
+                        padding: 10px 0px;
+                        border-radius: 5px;
+                        color: red;
+                        border: 1px solid red;
+                        text-align: center;
+                    }
+
+                    .form-success {
+                        background-color: rgb(157, 255, 162);
+                        padding: 10px 0px;
+                        border-radius: 5px;
+                        color: darkgreen;
+                        border: 1px solid darkgreen;
+                        text-align: center;
+                    }
                 </style>
             </head>
             <body class="d-flex flex-column min-vh-100">
@@ -56,7 +74,7 @@ function criarLinks($titulo) {
                     </a>
                     </li>
                     <li class="border border-danger border-2 rounded-2">
-                    <a href="./gerenciar-cliente.php" class="nav-link text-white d-flex align-items-center">
+                    <a href="../cliente/gerenciar-cliente.php" class="nav-link text-white d-flex align-items-center">
                         <i class="bi bi-gear-fill text-danger"></i>
                         GERENCIAR
                     </a>
@@ -89,6 +107,7 @@ function criarNav($titulo) {
                         </div>
                     </div>
                 </div>';
+
     } else if ($titulo == "Mecânicos") {
         return '<div class="px-3 border-bottom border-dark border-2 bg-secondary">
                     <div class="d-flex py-2 flex-wrap justify-content-center">
@@ -112,6 +131,7 @@ function criarNav($titulo) {
                         </div>
                     </div>
                 </div>';
+
     } else if ($titulo == "Serviços") {
         return '<div class="px-3 border-bottom border-dark border-2 bg-secondary">
                     <div class="d-flex py-2 flex-wrap justify-content-center">
@@ -142,8 +162,8 @@ function criarNav($titulo) {
 
 function criaFooter() {
     return '<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 bg-dark mt-auto">
-                <p class="nav col-md-4 mb-0 px-5 text-white justify-content-start">COPYRIGHT © 2023</p> 
-                <p class="nav col-md-4 mb-0 text-white justify-content-center">MECÂNICA CARTECH</p>
+                <p class="nav col-md-4 mb-0 px-5 text-white justify-content-start">MECÂNICA <span class="text-danger ms-1">CARTECH</span></p>
+                <p class="nav col-md-4 mb-0 text-white justify-content-center">COPYRIGHT © 2023</p> 
                 <ul class="nav col-md-4 justify-content-end px-5">
                     <li class="nav-item">
                         <a href="#" class="nav-link text-white d-flex align-items-center">
