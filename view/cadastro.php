@@ -1,7 +1,7 @@
 <?php
 require_once '../control/public.php';
 
-$url = $_GET['url'];
+$url = @$_GET['url'];
 
 if ($url == "cliente" || $url == "mecanico") {
     $nome = @$_POST['nome'];
@@ -68,5 +68,7 @@ if ($url == "cliente" || $url == "mecanico") {
             header('Location: servico/cadastro-servico.php?result=sucesso');
         }  
     }
+} else {
+    header('Location: cliente/gerenciar-cliente.php');
 }
 ?>

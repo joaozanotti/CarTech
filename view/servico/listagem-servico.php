@@ -1,14 +1,52 @@
 <?php
 require_once '../../control/public.php';
 require_once '../../control/funcoes.php';
+$msgExcluir = @$_GET['resultExcluir'];
 
 echo criaHeader("Serviços");
-
-$vetServicos = $servicoControl->listarObj();
-foreach ($vetServicos as $servico) {
-   $servico->toPrint();
-   echo "<br><br>";
-}
-
+?>
+<main class="d-flex flex-column align-items-center justify-content-center flex-grow-1 my-4">
+   <h2 class="mb-4">Listagem de serviços</h2>
+   <table class="table table-bordered table-striped table-hover text-center align-middle" style="width: 90%;">
+      <thead class="table-dark">
+         <tr>
+            <th>Tipo</th>
+            <th>Valor</th>
+            <th>Data e Hora</th>
+            <th>Tempo de Duração</th>
+            <th>Cliente Atendido</th>
+            <th>Mecânico Responsável</th>
+            <th>Ação</th>
+         </tr>
+      </thead>
+      <tbody>
+         <?php
+            $vetServicos = $servicoControl->listarObj();
+            foreach ($vetServicos as $servico) {
+               echo '<tr>
+                        <td>'.$servico->getTipo().'</td>
+                        <td>R$'.$servico->getValor().'</td>
+                        <td>'.$servico->getData().'</td>
+                        <td>'.$servico->getTempo().'</td>
+                        <td>'.$servico->getCliente()->getNome().'</td>
+                        <td>'.$servico->getMecanico()->getNome().'</td>
+                        <td>
+                           <a href="../localizar.php?id=servico'.$servico->getId().'" class="btn btn-primary">Editar</a>
+                           <a href="../excluir.php?id=servico'.$servico->getId().'" class="btn btn-danger">Excluir</a>
+                        </td>
+                     </tr>';
+            }
+         ?>
+      </tbody>
+   </table>
+   <?php
+      if ($msgExcluir == "erroPessoa") {
+         echo '<p class="form-error px-3">Erro! Este serviço não existe.</p>';
+      } else if ($msgExcluir == "sucesso") {
+         echo '<p class="form-success px-3">Serviço excluído com sucesso!</p>';
+      }
+   ?>
+</main>
+<?php
 echo criaFooter();
 ?>
