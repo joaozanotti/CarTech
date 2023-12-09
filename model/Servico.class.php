@@ -82,8 +82,8 @@ class Servico {
         "<br>Valor: ". $this->valor .
         "<br>Data e hora: " . $this->data_hora .
         "<br>Tempo de duração: " . $this->tempo_duracao .
-        "<br><br>Cliente:<br>" . $this->cliente->toString() .
-        "<br><br>Mecânico responsável:<br>" . $this->mecanico->toString();
+        "<br>Cliente:<br>" . $this->cliente->toString() .
+        "<br>Mecânico responsável:<br>" . $this->mecanico->toString();
     }
 
     function toPrint() {
