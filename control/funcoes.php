@@ -1,5 +1,5 @@
 <?php
-function criaHeader($titulo) {
+function criaHeader($titulo, $funcao = "") {
     return '<!DOCTYPE html>
             <html lang="pt-br">
             <head>
@@ -7,54 +7,39 @@ function criaHeader($titulo) {
                 <meta name="viewport" content="width=device-width, initial-scale=1">
                 <title>'.$titulo.' - CarTech</title>
                 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+                '.criarCss($titulo, $funcao).'
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
-                '.criarIcone($titulo).'
-                <style>
-                    .bi {
-                        font-size: 20px;
-                        margin-right: 6px;
-                    }
-
-                    .form-error {
-                        background-color: rgb(250, 189, 189);
-                        padding: 10px 0px;
-                        border-radius: 5px;
-                        color: red;
-                        border: 1px solid red;
-                        text-align: center;
-                    }
-
-                    .form-success {
-                        background-color: rgb(157, 255, 162);
-                        padding: 10px 0px;
-                        border-radius: 5px;
-                        color: darkgreen;
-                        border: 1px solid darkgreen;
-                        text-align: center;
-                    }
-                </style>
+                '.criarIcone($titulo, $funcao).'
             </head>
             <body class="d-flex flex-column min-vh-100">
                 <header class="text-bg-dark justify-content-between align-items-center">
                     <div class="px-5">
                         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                         <a href="#" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
-                        '.criarLinks($titulo).'
+                        '.criarLinks($titulo, $funcao).'
                         </div>
                     </div>
-                    '.criarNav($titulo).'
+                    '.criarNav($titulo, $funcao).'
                 </header>';
 }
 
-function criarIcone($titulo) {
-    if ($titulo == "Home") {
+function criarCss($titulo, $funcao) {
+    if ($titulo == "Home" || $funcao == "Editar") {
+        return '<link rel="stylesheet" href="../css/style.css">';
+    } else {
+        return '<link rel="stylesheet" href="../../css/style.css">';
+    }
+}
+
+function criarIcone($titulo, $funcao) {
+    if ($titulo == "Home" || $funcao == "Editar") {
         return '<link rel="icon" type="image/x-icon" href="../img/icone.png">';
     } else {
         return '<link rel="icon" type="image/x-icon" href="../../img/icone.png">';
     }
 }
 
-function criarLinks($titulo) {
+function criarLinks($titulo, $funcao) {
     if ($titulo == "Home") {
         return '<img src="../img/logobranca.png" alt="Logo da CarTech" width="80" class="py-2 ms-2">
                 </a>
@@ -72,6 +57,25 @@ function criarLinks($titulo) {
                     </a>
                     </li>
                 </ul>';
+
+    } else if ($funcao == "Editar") {
+        return '<img src="../img/logobranca.png" alt="Logo da CarTech" width="80" class="py-2 ms-2">
+                </a>
+                <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+                    <li class="border border-dark border-2">
+                    <a href="./index.php" class="nav-link text-white d-flex align-items-center">
+                        <i class="bi bi-house-door-fill text-danger"></i>
+                        INÍCIO
+                    </a>
+                    </li>
+                    <li class="border border-danger border-2 rounded-2">
+                    <a href="cliente/gerenciar-cliente.php" class="nav-link text-white d-flex align-items-center">
+                        <i class="bi bi-gear-fill text-danger"></i>
+                        GERENCIAR
+                    </a>
+                    </li>
+                </ul>';
+
     } else {
         return '<img src="../../img/logobranca.png" alt="Logo da CarTech" width="80" class="py-2 ms-2">
                 </a>
@@ -92,8 +96,32 @@ function criarLinks($titulo) {
     }
 }
 
-function criarNav($titulo) {
-    if ($titulo == "Clientes") {
+function criarNav($titulo, $funcao) {
+    if ($titulo == "Clientes" && $funcao == "Editar") {
+        return '<div class="px-3 border-bottom border-dark border-2 bg-secondary">
+                    <div class="d-flex py-2 flex-wrap justify-content-center">
+                        <div class="px-2">
+                            <a href="cliente/gerenciar-cliente.php" class="nav-link text-white px-2 py-1 border border-2 border-white rounded-2 d-flex align-items-center">
+                                <i class="bi bi-person-fill"></i>
+                                CLIENTES
+                            </a>
+                        </div>
+                        <div class="px-2">
+                            <a href="mecanico/gerenciar-mecanico.php" class="nav-link text-white px-2 py-1 border border-2 border-secondary d-flex align-items-center">
+                                <i class="bi bi-person-fill-gear"></i>
+                                MECÂNICOS
+                            </a>
+                        </div>
+                        <div class="px-2">
+                            <a href="servico/gerenciar-servico.php" class="nav-link text-white px-2 py-1 border border-2 border-secondary d-flex align-items-center">
+                                <i class="bi bi-suitcase-lg-fill"></i>
+                                SERVIÇOS
+                            </a>
+                        </div>
+                    </div>
+                </div>';
+
+    } else if ($titulo == "Clientes") {
         return '<div class="px-3 border-bottom border-dark border-2 bg-secondary">
                     <div class="d-flex py-2 flex-wrap justify-content-center">
                         <div class="px-2">
@@ -110,6 +138,30 @@ function criarNav($titulo) {
                         </div>
                         <div class="px-2">
                             <a href="../servico/gerenciar-servico.php" class="nav-link text-white px-2 py-1 border border-2 border-secondary d-flex align-items-center">
+                                <i class="bi bi-suitcase-lg-fill"></i>
+                                SERVIÇOS
+                            </a>
+                        </div>
+                    </div>
+                </div>';
+
+    } else if ($titulo == "Mecânicos" && $funcao == "Editar") {
+        return '<div class="px-3 border-bottom border-dark border-2 bg-secondary">
+                    <div class="d-flex py-2 flex-wrap justify-content-center">
+                        <div class="px-2">
+                            <a href="cliente/gerenciar-cliente.php" class="nav-link text-white px-2 py-1 border border-2 border-secondary d-flex align-items-center">
+                                <i class="bi bi-person-fill"></i>
+                                CLIENTES
+                            </a>
+                        </div>
+                        <div class="px-2">
+                            <a href="mecanico/gerenciar-mecanico.php" class="nav-link text-white px-2 py-1 border border-2 border-white rounded-2 d-flex align-items-center">
+                                <i class="bi bi-person-fill-gear"></i>
+                                MECÂNICOS
+                            </a>
+                        </div>
+                        <div class="px-2">
+                            <a href="servico/gerenciar-servico.php" class="nav-link text-white px-2 py-1 border border-2 border-secondary d-flex align-items-center">
                                 <i class="bi bi-suitcase-lg-fill"></i>
                                 SERVIÇOS
                             </a>
@@ -141,6 +193,30 @@ function criarNav($titulo) {
                     </div>
                 </div>';
 
+    } else if ($titulo == "Serviços" && $funcao == "Editar") {
+        return '<div class="px-3 border-bottom border-dark border-2 bg-secondary">
+                    <div class="d-flex py-2 flex-wrap justify-content-center">
+                        <div class="px-2">
+                            <a href="cliente/gerenciar-cliente.php" class="nav-link text-white px-2 py-1 border border-2 border-secondary d-flex align-items-center">
+                                <i class="bi bi-person-fill"></i>
+                                CLIENTES
+                            </a>
+                        </div>
+                        <div class="px-2">
+                            <a href="mecanico/gerenciar-mecanico.php" class="nav-link text-white px-2 py-1 border border-2 border-secondary d-flex align-items-center">
+                                <i class="bi bi-person-fill-gear"></i>
+                                MECÂNICOS
+                            </a>
+                        </div>
+                        <div class="px-2">
+                            <a href="servico/gerenciar-servico.php" class="nav-link text-white px-2 py-1 border border-2 border-white rounded-2 d-flex align-items-center">
+                                <i class="bi bi-suitcase-lg-fill"></i>
+                                SERVIÇOS
+                            </a>
+                        </div>
+                    </div>
+                </div>';
+
     } else if ($titulo == "Serviços") {
         return '<div class="px-3 border-bottom border-dark border-2 bg-secondary">
                     <div class="d-flex py-2 flex-wrap justify-content-center">
@@ -164,6 +240,10 @@ function criarNav($titulo) {
                         </div>
                     </div>
                 </div>';
+                
+    } else if ($funcao == "Editar") {
+        return '';
+
     } else {
         return '';
     }
