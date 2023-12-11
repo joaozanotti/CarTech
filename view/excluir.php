@@ -1,10 +1,10 @@
 <?php
 require_once '../control/public.php';
 
+$url = @$_GET['url'];
 $id = @$_GET['id'];
 
-if (strpos($id, "cliente") !== false) {
-    $id = substr($id, 7);
+if ($url == "cliente") {
     $cliente = $clienteControl->buscarPorId($id);
     if ($cliente != null) {
         if ($clienteControl->deletar($cliente) == true) {
@@ -16,8 +16,7 @@ if (strpos($id, "cliente") !== false) {
         header('Location: cliente/listagem-cliente.php?resultExcluir=erroPessoa');
     }
 
-} else if (strpos($id, "mecanico") !== false) {
-    $id = substr($id, 8);
+} else if ($url == "mecanico") {
     $mecanico = $mecanicoControl->buscarPorId($id);
     if ($mecanico != null) {
         if ($mecanicoControl->deletar($mecanico) == true) {
@@ -29,8 +28,7 @@ if (strpos($id, "cliente") !== false) {
         header('Location: mecanico/listagem-mecanico.php?resultExcluir=erroPessoa');
     }
 
-} else if (strpos($id, "servico") !== false) {
-    $id = substr($id, 7);
+} else if ($url == "servico") {
     $servico = $servicoControl->buscarPorId($id);
     if ($servico != null) {
         $servicoControl->deletar($servico);

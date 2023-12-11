@@ -15,7 +15,7 @@ if ($url == "cliente" || $url == "mecanico") {
         if (($nome == "") || ($cpf == "" || strlen($cpf) != 14) || ($telefone == "" || strlen($telefone) != 14) || ($endereco == "") || ($pagamento == "")) {
             header('Location: cliente/cadastro-cliente.php?result=erroInfo');
         } else {
-            if ($clienteControl->buscarPorCpf($cpf) != null) {
+            if ($pessoaControl->buscarPorCpf($cpf) != null) {
                 header('Location: cliente/cadastro-cliente.php?result=erroPessoa');
             } else {
                 $cliente = new Cliente($nome, $cpf, $telefone, $endereco, $pagamento);
@@ -32,7 +32,7 @@ if ($url == "cliente" || $url == "mecanico") {
         if (($nome == "") || ($cpf == "" || strlen($cpf) != 14) || ($telefone == "" || strlen($telefone) != 14) || ($endereco == "") || ($salario == "") || ($cargo == "") || ($especializacao == "")) {
             header('Location: mecanico/cadastro-mecanico.php?result=erroInfo');
         } else {
-            if ($mecanicoControl->buscarPorCpf($cpf) != null) {
+            if ($pessoaControl->buscarPorCpf($cpf) != null) {
                 header('Location: mecanico/cadastro-mecanico.php?result=erroPessoa');
             } else {
                 $mecanico = new Mecanico($nome, $cpf, $telefone, $endereco, $salario, $cargo, $especializacao);

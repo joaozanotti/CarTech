@@ -44,7 +44,7 @@ echo criaHeader("Mecânicos");
                 if ($msg == "erroInfo") {
                     echo "<p class='form-error'>Erro! Informações inválidas.</p>";
                 } else if ($msg == "erroPessoa") {
-                    echo "<p class='form-error'>Erro! Já existe um mecânico com este CPF.</p>";
+                    echo "<p class='form-error'>Erro! Já existe uma pessoa com este CPF.</p>";
                 } else if ($msg == "sucesso") {
                     echo "<p class='form-success'>Mecânico cadastrado com sucesso!</p>";
                 }

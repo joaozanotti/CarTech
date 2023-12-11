@@ -44,7 +44,7 @@ class ServicoControl {
 
     public function atualizar($obj) {        
         if ($obj instanceof Servico) {
-            $sql = "UPDATE servicos SET tipo='".$obj->getTipo()."', valor='".$obj->getValor()."', data_hora=".$obj->getData().", tempo_duracao='".$obj->getTempo()."', id_cliente='".$obj->getCliente()->getId()."', id_mecanico='".$obj->getMecanico()->getId()."' WHERE id_servico='".$obj->getId()."'";
+            $sql = "UPDATE servicos SET tipo='".$obj->getTipo()."', valor='".$obj->getValor()."', data_hora='".$obj->getData()."', tempo_duracao='".$obj->getTempo()."', id_cliente='".$obj->getCliente()->getId()."', id_mecanico='".$obj->getMecanico()->getId()."' WHERE id_servico='".$obj->getId()."'";
             $result = $this->conexao->query($sql);
             if ($result) {
                 return true;

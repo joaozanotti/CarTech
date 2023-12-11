@@ -2,20 +2,20 @@
 require_once '../control/public.php';
 require_once '../control/funcoes.php';
 
+$url = @$_GET['url'];
 $id = @$_GET['id'];
 $msgCliente = @$_GET['resultCliente'];
 $msgMecanico = @$_GET['resultMecanico'];
 $msgServico = @$_GET['resultServico'];
 
-if (strpos($id, "cliente") !== false) {
-    $id = substr($id, 7);
+if ($url == "cliente") {
     $cliente = $clienteControl->buscarPorId($id);
     if ($cliente != null) {
         echo criaHeader("Clientes", "Editar");
         ?>
         <main class="d-flex flex-column align-items-center justify-content-center flex-grow-1 my-4">
             <h1 class="mb-3">Editar clientes</h1>
-            <?php echo '<form action="editar.php?id=cliente'.$cliente->getId().'" method="post" class="w-25">' ?>
+            <?php echo '<form action="editar.php?url=cliente&id='.$cliente->getId().'" method="post" class="w-25">' ?>
                 <p>
                     <label for="nome" class="form-label">Nome:</label>
                     <input type="text" id="nome" name="nome" class="form-control border border-secondary" placeholder="Digite o nome..." value="<?php echo $cliente->getNome() ?>" required>
@@ -45,7 +45,7 @@ if (strpos($id, "cliente") !== false) {
                         if ($msgCliente == "erroInfo") {
                             echo "<p class='form-error'>Erro! Informações inválidas.</p>";
                         } else if ($msgCliente == "erroPessoa") {
-                            echo "<p class='form-error'>Erro! Já existe um cliente com este CPF.</p>";
+                            echo "<p class='form-error'>Erro! Já existe uma pessoa com este CPF.</p>";
                         }
                     ?>
                 </p>
@@ -55,15 +55,14 @@ if (strpos($id, "cliente") !== false) {
         echo criaFooter();
     }
 
-} else if (strpos($id, "mecanico") !== false) {
-    $id = substr($id, 8);
+} else if ($url == "mecanico") {
     $mecanico = $mecanicoControl->buscarPorId($id);
     if ($mecanico != null) {
         echo criaHeader("Mecânicos", "Editar");
         ?>
         <main class="d-flex flex-column align-items-center justify-content-center flex-grow-1 my-4">
             <h1 class="mb-3">Editar mecânicos</h1>
-            <?php echo '<form action="editar.php?id=mecanico'.$mecanico->getId().'" method="post" class="w-25">' ?>
+            <?php echo '<form action="editar.php?url=mecanico&id='.$mecanico->getId().'" method="post" class="w-25">' ?>
                 <p>
                     <label for="nome" class="form-label">Nome:</label>
                     <input type="text" id="nome" name="nome" class="form-control border border-secondary" placeholder="Digite o nome..." value="<?php echo $mecanico->getNome() ?>" required>
@@ -101,7 +100,7 @@ if (strpos($id, "cliente") !== false) {
                         if ($msgMecanico == "erroInfo") {
                             echo "<p class='form-error'>Erro! Informações inválidas.</p>";
                         } else if ($msgMecanico == "erroPessoa") {
-                            echo "<p class='form-error'>Erro! Já existe um mecânico com este CPF.</p>";
+                            echo "<p class='form-error'>Erro! Já existe uma pessoa com este CPF.</p>";
                         }
                     ?>
                 </p>
@@ -111,8 +110,7 @@ if (strpos($id, "cliente") !== false) {
         echo criaFooter();
     }
 
-} else if (strpos($id, "servico") !== false) {
-    $id = substr($id, 7);
+} else if ($url == "servico") {
     $servico = $servicoControl->buscarPorId($id);
     if ($servico != null) {
         echo criaHeader("Serviços", "Editar");
@@ -172,7 +170,7 @@ if (strpos($id, "cliente") !== false) {
             </div>
             <div class="formulario me-5 d-flex flex-column align-items-center">
                 <h1 class="mb-3 me-5">Editar serviços</h1>
-                <?php echo '<form action="editar.php?id=servico'.$servico->getId().'" method="post" class="w-100 me-5">' ?>
+                <?php echo '<form action="editar.php?url=servico&id='.$servico->getId().'" method="post" class="w-100 me-5">' ?>
                     <p>
                         <label for="tipo" class="form-label">Tipo:</label>
                         <input type="text" id="tipo" name="tipo" class="form-control border border-secondary" placeholder="Digite o tipo..." value="<?php echo $servico->getTipo() ?>" required>
@@ -180,6 +178,10 @@ if (strpos($id, "cliente") !== false) {
                     <p>
                         <label for="valor" class="form-label">Valor: R$</label>
                         <input type="number" step="0.01" id="valor" name="valor" class="form-control border border-secondary" placeholder="Digite o valor..." value="<?php echo $servico->getValor() ?>" required>
+                    </p>
+                    <p>
+                        <label for="dataHora" class="form-label">Data e hora:</label>
+                        <input type="datetime-local" id="dataHora" name="dataHora" class="form-control border border-secondary" placeholder="Digite o tempo de duração..." value="<?php echo $servico->getData() ?>" required>
                     </p>
                     <p>
                         <label for="tempoDuracao" class="form-label">Tempo de duração:</label>

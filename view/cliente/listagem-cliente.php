@@ -30,8 +30,8 @@ echo criaHeader("Clientes");
                         <td>'.$cliente->getEndereco().'</td>
                         <td>'.$cliente->getPagamento().'</td>
                         <td>
-                           <a href="../localizar.php?id=cliente'.$cliente->getId().'" class="btn btn-primary">Editar</a>
-                           <a href="../excluir.php?id=cliente'.$cliente->getId().'" class="btn btn-danger">Excluir</a>
+                           <a href="../localizar.php?url=cliente&id='.$cliente->getId().'" class="btn btn-primary">Editar</a>
+                           <a href="../excluir.php?url=cliente&id='.$cliente->getId().'" class="btn btn-danger">Excluir</a>
                         </td>
                      </tr>';
             }

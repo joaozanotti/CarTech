@@ -2,6 +2,7 @@
 require_once '../../control/public.php';
 require_once '../../control/funcoes.php';
 $msgExcluir = @$_GET['resultExcluir'];
+$msgEditar = @$_GET['resultEditar'];
 
 echo criaHeader("Mecânicos");
 ?>
@@ -33,8 +34,8 @@ echo criaHeader("Mecânicos");
                         <td>'.$mecanico->getCargo().'</td>
                         <td>'.$mecanico->getEspecializacao().'</td>
                         <td>
-                           <a href="../localizar.php?id=mecanico'.$mecanico->getId().'" class="btn btn-primary">Editar</a>
-                           <a href="../excluir.php?id=mecanico'.$mecanico->getId().'" class="btn btn-danger">Excluir</a>
+                           <a href="../localizar.php?url=mecanico&id='.$mecanico->getId().'" class="btn btn-primary">Editar</a>
+                           <a href="../excluir.php?url=mecanico&id='.$mecanico->getId().'" class="btn btn-danger">Excluir</a>
                         </td>
                      </tr>';
             }
@@ -48,6 +49,8 @@ echo criaHeader("Mecânicos");
          echo '<p class="form-error px-3">Erro! Este mecânico não existe.</p>';
       } else if ($msgExcluir == "sucesso") {
          echo '<p class="form-success px-3">Mecânico excluído com sucesso!</p>';
+      } else if ($msgEditar == "sucesso") {
+         echo '<p class="form-success px-3">Mecânico editado com sucesso!</p>';
       }
    ?>
 </main>

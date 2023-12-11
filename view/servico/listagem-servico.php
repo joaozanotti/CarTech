@@ -2,6 +2,7 @@
 require_once '../../control/public.php';
 require_once '../../control/funcoes.php';
 $msgExcluir = @$_GET['resultExcluir'];
+$msgEditar = @$_GET['resultEditar'];
 
 echo criaHeader("Serviços");
 ?>
@@ -31,8 +32,8 @@ echo criaHeader("Serviços");
                         <td>'.$servico->getCliente()->getNome().'</td>
                         <td>'.$servico->getMecanico()->getNome().'</td>
                         <td>
-                           <a href="../localizar.php?id=servico'.$servico->getId().'" class="btn btn-primary">Editar</a>
-                           <a href="../excluir.php?id=servico'.$servico->getId().'" class="btn btn-danger">Excluir</a>
+                           <a href="../localizar.php?url=servico&id='.$servico->getId().'" class="btn btn-primary">Editar</a>
+                           <a href="../excluir.php?url=servico&id='.$servico->getId().'" class="btn btn-danger">Excluir</a>
                         </td>
                      </tr>';
             }
@@ -44,6 +45,8 @@ echo criaHeader("Serviços");
          echo '<p class="form-error px-3">Erro! Este serviço não existe.</p>';
       } else if ($msgExcluir == "sucesso") {
          echo '<p class="form-success px-3">Serviço excluído com sucesso!</p>';
+      } else if ($msgEditar == "sucesso") {
+         echo '<p class="form-success px-3">Serviço editado com sucesso!</p>';
       }
    ?>
 </main>
