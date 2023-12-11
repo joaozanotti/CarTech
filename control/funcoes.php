@@ -56,7 +56,7 @@ function criarIcone($titulo) {
 
 function criarLinks($titulo) {
     if ($titulo == "Home") {
-        return '<img src="../img/logobranca.png" alt="Logo da CarTech" width="80" class="py-2">
+        return '<img src="../img/logobranca.png" alt="Logo da CarTech" width="80" class="py-2 ms-2">
                 </a>
                 <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
                     <li class="border border-danger border-2 rounded-2">
@@ -73,7 +73,7 @@ function criarLinks($titulo) {
                     </li>
                 </ul>';
     } else {
-        return '<img src="../../img/logobranca.png" alt="Logo da CarTech" width="80" class="py-2">
+        return '<img src="../../img/logobranca.png" alt="Logo da CarTech" width="80" class="py-2 ms-2">
                 </a>
                 <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
                     <li class="border border-dark border-2">
