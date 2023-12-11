@@ -24,7 +24,7 @@ echo criaHeader("Mecânicos");
             <input type="text" id="endereco" name="endereco" class="form-control border border-secondary" placeholder="Digite o endereço..." required>
         </p>
         <p>
-            <label for="salario" class="form-label">Salário:</label>
+            <label for="salario" class="form-label">Salário: R$</label>
             <input type="number" id="salario" name="salario" class="form-control border border-secondary" placeholder="Digite o salário..." required>
         </p>
         <p>
@@ -44,7 +44,7 @@ echo criaHeader("Mecânicos");
                 if ($msg == "erroInfo") {
                     echo "<p class='form-error'>Erro! Informações inválidas.</p>";
                 } else if ($msg == "erroPessoa") {
-                    echo "<p class='form-error'>Erro! Mecânico já cadastrado.</p>";
+                    echo "<p class='form-error'>Erro! Já existe um mecânico com este CPF.</p>";
                 } else if ($msg == "sucesso") {
                     echo "<p class='form-success'>Mecânico cadastrado com sucesso!</p>";
                 }
