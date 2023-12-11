@@ -1,0 +1,94 @@
+/* Estilização do home */
+
+.texto {
+    width: 92.5%;
+}
+
+.texto h5 {
+    font-size: 1.6em;
+    text-align: justify;
+}
+
+.texto p {
+    font-size: 1.1em;
+    text-align: justify;
+}
+
+.logo img {
+    width: 70%;
+}
+
+.servico {
+    width: 20%; 
+    height: 10em; 
+    background-color: #cccccc;
+}
+
+.servico i {
+    font-size: 2em;
+}
+
+/* Estilização dos ícones */
+
+.bi {
+    font-size: 20px;
+    margin-right: 6px;
+}
+
+/* Estilização das mensagens de retorno */
+
+.form-error {
+    background-color: rgb(255, 217, 217);
+    padding: 10px 0px;
+    border-radius: 5px;
+    color: red;
+    border: 1px solid red;
+    text-align: center;
+}
+
+.form-success {
+    background-color: rgb(206, 255, 209);
+    padding: 10px 0px;
+    border-radius: 5px;
+    color: darkgreen;
+    border: 1px solid darkgreen;
+    text-align: center;
+}
+
+/* Media queries */
+
+@media (min-width: 1600px) {
+    .texto {
+        width: 90%;
+    }
+
+    .texto h5 {
+        font-size: 1.85em;
+    }
+
+    .texto p {
+        font-size: 1.25em;
+    }
+
+    .logo img {
+        width: 60%;
+    }
+
+    .servico {
+        width: 13%; 
+        height: 12em; 
+    }
+
+    .servico i {
+        font-size: 2em;
+    }
+
+    .botoes h4 {
+        font-size: 1.6em;
+    }
+
+    .botoes a {
+        width: 19%;
+        height: 2.5em;
+    }
+}
