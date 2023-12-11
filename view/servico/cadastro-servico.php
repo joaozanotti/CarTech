@@ -66,7 +66,7 @@ echo criaHeader("Serviços");
                 <input type="text" id="tipo" name="tipo" class="form-control border border-secondary" placeholder="Digite o tipo..." required>
             </p>
             <p>
-                <label for="valor" class="form-label">Valor:</label>
+                <label for="valor" class="form-label">Valor: R$</label>
                 <input type="number" step="0.01" id="valor" name="valor" class="form-control border border-secondary" placeholder="Digite o valor..." required>
             </p>
             <p>
