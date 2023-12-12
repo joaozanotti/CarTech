@@ -75,11 +75,11 @@ echo criaHeader("Serviços");
             </p>
             <p>
                 <label for="cpfCliente" class="form-label">CPF do cliente:</label>
-                <input type="text" id="cpfCliente" name="cpfCliente" class="form-control border border-secondary" placeholder="Digite o CPF do cliente... (Mínimo 14 dígitos)" required>
+                <input type="text" id="cpfCliente" name="cpfCliente" class="form-control border border-secondary" placeholder="Digite o CPF do cliente... (Apenas 14 dígitos)" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" required>
             </p>
             <p>
                 <label for="cpfMecanico" class="form-label">CPF do mecânico:</label>
-                <input type="text" id="cpfMecanico" name="cpfMecanico" class="form-control border border-secondary" placeholder="Digite o CPF do mecânico... (Mínimo 14 dígitos)" required>
+                <input type="text" id="cpfMecanico" name="cpfMecanico" class="form-control border border-secondary" placeholder="Digite o CPF do mecânico... (Apenas 14 dígitos)" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" required>
             </p>
             <p class="d-flex justify-content-center mt-4">
                 <input type="submit" value="Cadastrar" class="btn btn-dark mx-2 border border-dark border-2">

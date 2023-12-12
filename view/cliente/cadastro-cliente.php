@@ -13,11 +13,11 @@ echo criaHeader("Clientes");
         </p>
         <p>
             <label for="cpf" class="form-label">CPF:</label>
-            <input type="text" id="cpf" name="cpf" class="form-control border border-secondary" placeholder="Digite o CPF... (Mínimo 14 dígitos)" required>
+            <input type="text" id="cpf" name="cpf" class="form-control border border-secondary" placeholder="Digite o CPF... (Apenas 14 dígitos)" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" required>
         </p>
         <p>
             <label for="telefone" class="form-label">Telefone:</label>
-            <input type="text" id="telefone" name="telefone" class="form-control border border-secondary" placeholder="Digite o telefone... (Mínimo 14 dígitos)" required>
+            <input type="text" id="telefone" name="telefone" class="form-control border border-secondary" placeholder="Digite o telefone... (Apenas 14 dígitos)" pattern="\([0-9]{2}\)[0-9]{5}-[0-9]{4}" required>
         </p>
         <p>
             <label for="endereco" class="form-label">Endereço:</label>

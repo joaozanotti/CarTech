@@ -85,9 +85,5 @@ class Servico {
         "<br>Cliente:<br>" . $this->cliente->toString() .
         "<br>Mecânico responsável:<br>" . $this->mecanico->toString();
     }
-
-    function toPrint() {
-        echo $this->toString();
-    }
 }
 ?>

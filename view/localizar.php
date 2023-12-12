@@ -22,11 +22,11 @@ if ($url == "cliente") {
                 </p>
                 <p>
                     <label for="cpf" class="form-label">CPF:</label>
-                    <input type="text" id="cpf" name="cpf" class="form-control border border-secondary" placeholder="Digite o CPF... (Mínimo 14 dígitos)" value="<?php echo $cliente->getCpf() ?>" required>
+                    <input type="text" id="cpf" name="cpf" class="form-control border border-secondary" placeholder="Digite o CPF... (Apenas 14 dígitos)" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" value="<?php echo $cliente->getCpf() ?>" required>
                 </p>
                 <p>
                     <label for="telefone" class="form-label">Telefone:</label>
-                    <input type="text" id="telefone" name="telefone" class="form-control border border-secondary" placeholder="Digite o telefone... (Mínimo 14 dígitos)" value="<?php echo $cliente->getTelefone() ?>" required>
+                    <input type="text" id="telefone" name="telefone" class="form-control border border-secondary" placeholder="Digite o telefone... (Apenas 14 dígitos)" pattern="\([0-9]{2}\)[0-9]{5}-[0-9]{4}" value="<?php echo $cliente->getTelefone() ?>" required>
                 </p>
                 <p>
                     <label for="endereco" class="form-label">Endereço:</label>
@@ -69,11 +69,11 @@ if ($url == "cliente") {
                 </p>
                 <p>
                     <label for="cpf" class="form-label">CPF:</label>
-                    <input type="text" id="cpf" name="cpf" class="form-control border border-secondary" placeholder="Digite o CPF... (Mínimo 14 dígitos)" value="<?php echo $mecanico->getCpf() ?>" required>
+                    <input type="text" id="cpf" name="cpf" class="form-control border border-secondary" placeholder="Digite o CPF... (Apenas 14 dígitos)" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" value="<?php echo $mecanico->getCpf() ?>" required>
                 </p>
                 <p>
                     <label for="telefone" class="form-label">Telefone:</label>
-                    <input type="text" id="telefone" name="telefone" class="form-control border border-secondary" placeholder="Digite o telefone... (Mínimo 14 dígitos)" value="<?php echo $mecanico->getTelefone() ?>" required>
+                    <input type="text" id="telefone" name="telefone" class="form-control border border-secondary" placeholder="Digite o telefone... (Apenas 14 dígitos)" pattern="\([0-9]{2}\)[0-9]{5}-[0-9]{4}" value="<?php echo $mecanico->getTelefone() ?>" required>
                 </p>
                 <p>
                     <label for="endereco" class="form-label">Endereço:</label>
@@ -189,11 +189,11 @@ if ($url == "cliente") {
                     </p>
                     <p>
                         <label for="cpfCliente" class="form-label">CPF do cliente:</label>
-                        <input type="text" id="cpfCliente" name="cpfCliente" class="form-control border border-secondary" placeholder="Digite o CPF do cliente... (Mínimo 14 dígitos)" value="<?php echo $servico->getCliente()->getCpf() ?>" required>
+                        <input type="text" id="cpfCliente" name="cpfCliente" class="form-control border border-secondary" placeholder="Digite o CPF do cliente... (Apenas 14 dígitos)" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" value="<?php echo $servico->getCliente()->getCpf() ?>" required>
                     </p>
                     <p>
                         <label for="cpfMecanico" class="form-label">CPF do mecânico:</label>
-                        <input type="text" id="cpfMecanico" name="cpfMecanico" class="form-control border border-secondary" placeholder="Digite o CPF do mecânico... (Mínimo 14 dígitos)" value="<?php echo $servico->getMecanico()->getCpf() ?>" required>
+                        <input type="text" id="cpfMecanico" name="cpfMecanico" class="form-control border border-secondary" placeholder="Digite o CPF do mecânico... (Apenas 14 dígitos)" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" value="<?php echo $servico->getMecanico()->getCpf() ?>" required>
                     </p>
                     <p class="d-flex justify-content-center mt-4">
                         <input type="submit" value="Editar" class="btn btn-dark mx-2 border border-dark border-2">

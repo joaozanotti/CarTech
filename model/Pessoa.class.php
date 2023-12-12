@@ -54,9 +54,5 @@ class Pessoa {
             "<br>Telefone: " . $this->telefone . 
             "<br>Endereço: " . $this->endereco;
     }
-
-    function toPrint() {
-        echo $this->toString();
-    }
 }
 ?>
