@@ -9,17 +9,21 @@ echo criaHeader("Serviços");
     <div class="listagem ms-5">
         <div class="clientes d-flex flex-column align-items-center mb-4">
         <h2 class="mb-4">Clientes cadastrados</h2>
-        <table class="table table-bordered table-striped table-hover text-center align-middle">
-            <thead class="table-dark">
-                <tr>
-                    <th>Nome</th>
-                    <th>CPF</th>
-                    <th>Pref. Pagamento</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                    $vetClientes = $clienteControl->listarObj();
+            <?php
+                $vetClientes = $clienteControl->listarObj();
+
+                if ($vetClientes != null) {
+                    echo '<table class="table table-bordered table-striped table-hover text-center align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Nome</th>
+                            <th>CPF</th>
+                            <th>Pref. Pagamento</th>
+                        </tr>
+                    </thead>
+                    <tbody>';
+        
+                    
                     foreach ($vetClientes as $cliente) {
                     echo '<tr>
                             <td>'.$cliente->getNome().'</td>
@@ -27,35 +31,48 @@ echo criaHeader("Serviços");
                             <td>'.$cliente->getPagamento().'</td>
                         </tr>';
                     }
-                ?>
-            </tbody>
-        </table>
+
+                    echo '</tbody>
+                    </table>';
+
+                } else {
+                    echo '<p>Nenhum cliente encontrado.</p>';
+                }
+            ?>
         </div>
         <div class="mecanicos d-flex flex-column align-items-center mt-4">
             <h2 class="mb-4">Mecânicos cadastrados</h2>
-            <table class="table table-bordered table-striped table-hover text-center align-middle">
-                <thead class="table-dark">
-                    <tr>
-                        <th>Nome</th>
-                        <th>CPF</th>
-                        <th>Cargo</th>
-                        <th>Especialização</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                        $vetMecanicos = $mecanicoControl->listarObj();
-                        foreach ($vetMecanicos as $mecanico) {
+            <?php
+                $vetMecanicos = $mecanicoControl->listarObj();
+
+                if ($vetMecanicos != null) {
+                    echo '<table class="table table-bordered table-striped table-hover text-center align-middle">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>CPF</th>
+                                    <th>Cargo</th>
+                                    <th>Especialização</th>
+                                </tr>
+                            </thead>
+                            <tbody>';
+
+                    foreach ($vetMecanicos as $mecanico) {
                         echo '<tr>
                                 <td>'.$mecanico->getNome().'</td>
                                 <td>'.$mecanico->getCpf().'</td>
                                 <td>'.$mecanico->getCargo().'</td>
                                 <td>'.$mecanico->getEspecializacao().'</td>
                             </tr>';
-                        }
-                    ?>
-                </tbody>
-            </table>
+                    }
+
+                    echo '</tbody>
+                    </table>';
+
+                } else {
+                    echo '<p>Nenhum mecânico encontrado.</p>';
+                }
+            ?>  
         </div>
     </div>
     <div class="formulario me-5 d-flex flex-column align-items-center">

@@ -8,19 +8,23 @@ echo criaHeader("Clientes");
 ?>
 <main class="d-flex flex-column align-items-center justify-content-center flex-grow-1 my-4">
    <h2 class="mb-4">Listagem de clientes</h2>
-   <table class="table table-bordered table-striped table-hover text-center align-middle" style="width: 90%;">
-      <thead class="table-dark">
-         <tr>
-            <th>Nome</th>
-            <th>CPF</th>
-            <th>Telefone</th>
-            <th>Endereço</th>
-            <th>Pref. Pagamento</th>
-            <th>Ação</th>
-         </tr>
-      </thead>
-      <tbody>
-         <?php
+   <?php
+      $vetClientes = $clienteControl->listarObj();
+   
+      if ($vetClientes != null) {
+         echo '<table class="table table-bordered table-striped table-hover text-center align-middle" style="width: 90%;">
+                  <thead class="table-dark">
+                     <tr>
+                        <th>Nome</th>
+                        <th>CPF</th>
+                        <th>Telefone</th>
+                        <th>Endereço</th>
+                        <th>Pref. Pagamento</th>
+                        <th>Ação</th>
+                     </tr>
+                  </thead>
+                  <tbody>';
+
             $vetClientes = $clienteControl->listarObj();
             foreach ($vetClientes as $cliente) {
                echo '<tr>
@@ -35,10 +39,13 @@ echo criaHeader("Clientes");
                         </td>
                      </tr>';
             }
-         ?>
-      </tbody>
-   </table>
-   <?php
+            echo '</tbody>
+               </table>';
+
+      } else {
+         echo '<p>Nenhum cliente encontrado.</p>';
+      }
+         
       if ($msgExcluir == "erroInfo") {
          echo '<p class="form-error px-3">Erro! Este cliente está cadastrado em algum serviço.</p>';
       } else if ($msgExcluir == "erroPessoa") {

@@ -8,22 +8,25 @@ echo criaHeader("Mecânicos");
 ?>
 <main class="d-flex flex-column align-items-center justify-content-center flex-grow-1 my-4">
    <h2 class="mb-4">Listagem de mecânicos</h2>
-   <table class="table table-bordered table-striped table-hover text-center align-middle" style="width: 90%;">
-      <thead class="table-dark">
-         <tr>
-            <th>Nome</th>
-            <th>CPF</th>
-            <th>Telefone</th>
-            <th>Endereço</th>
-            <th>Salário</th>
-            <th>Cargo</th>
-            <th>Especialização</th>
-            <th>Ação</th>
-         </tr>
-      </thead>
-      <tbody>
-         <?php
-            $vetMecanicos = $mecanicoControl->listarObj();
+   <?php
+      $vetMecanicos = $mecanicoControl->listarObj();
+
+      if ($vetMecanicos != null) {
+         echo '<table class="table table-bordered table-striped table-hover text-center align-middle" style="width: 90%;">
+                  <thead class="table-dark">
+                     <tr>
+                        <th>Nome</th>
+                        <th>CPF</th>
+                        <th>Telefone</th>
+                        <th>Endereço</th>
+                        <th>Salário</th>
+                        <th>Cargo</th>
+                        <th>Especialização</th>
+                        <th>Ação</th>
+                     </tr>
+                  </thead>
+                  <tbody>';
+            
             foreach ($vetMecanicos as $mecanico) {
                echo '<tr>
                         <td>'.$mecanico->getNome().'</td>
@@ -39,10 +42,14 @@ echo criaHeader("Mecânicos");
                         </td>
                      </tr>';
             }
-         ?>
-      </tbody>
-   </table>
-   <?php
+
+            echo '</tbody>
+               </table>';
+
+      } else {
+         echo '<p>Nenhum mecânico encontrado.</p>';
+      }
+
       if ($msgExcluir == "erroInfo") {
          echo '<p class="form-error px-3">Erro! Este mecânico está cadastrado em algum serviço.</p>';
       } else if ($msgExcluir == "erroPessoa") {

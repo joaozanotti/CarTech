@@ -8,21 +8,24 @@ echo criaHeader("Serviços");
 ?>
 <main class="d-flex flex-column align-items-center justify-content-center flex-grow-1 my-4">
    <h2 class="mb-4">Listagem de serviços</h2>
-   <table class="table table-bordered table-striped table-hover text-center align-middle" style="width: 90%;">
-      <thead class="table-dark">
-         <tr>
-            <th>Tipo</th>
-            <th>Valor</th>
-            <th>Data e Hora</th>
-            <th>Tempo de Duração</th>
-            <th>Cliente Atendido</th>
-            <th>Mecânico Responsável</th>
-            <th>Ação</th>
-         </tr>
-      </thead>
-      <tbody>
-         <?php
-            $vetServicos = $servicoControl->listarObj();
+   <?php
+      $vetServicos = $servicoControl->listarObj();
+   
+      if ($vetServicos != null) {
+         echo '<table class="table table-bordered table-striped table-hover text-center align-middle" style="width: 90%;">
+                  <thead class="table-dark">
+                     <tr>
+                        <th>Tipo</th>
+                        <th>Valor</th>
+                        <th>Data e Hora</th>
+                        <th>Tempo de Duração</th>
+                        <th>Cliente Atendido</th>
+                        <th>Mecânico Responsável</th>
+                        <th>Ação</th>
+                     </tr>
+                  </thead>
+                  <tbody>';
+
             foreach ($vetServicos as $servico) {
                echo '<tr>
                         <td>'.$servico->getTipo().'</td>
@@ -37,10 +40,14 @@ echo criaHeader("Serviços");
                         </td>
                      </tr>';
             }
-         ?>
-      </tbody>
-   </table>
-   <?php
+            
+            echo '</tbody>
+               </table>';
+
+      } else {
+         echo '<p>Nenhum serviço encontrado.</p>';
+      }
+
       if ($msgExcluir == "erroPessoa") {
          echo '<p class="form-error px-3">Erro! Este serviço não existe.</p>';
       } else if ($msgExcluir == "sucesso") {
