@@ -14,7 +14,7 @@ echo criaHeader("Serviços");
 
                 if ($vetClientes != null) {
                     echo '<table class="table table-bordered table-striped table-hover text-center align-middle">
-                    <thead class="table-dark">
+                    <thead class="table-dark align-middle">
                         <tr>
                             <th>Nome</th>
                             <th>CPF</th>
@@ -47,7 +47,7 @@ echo criaHeader("Serviços");
 
                 if ($vetMecanicos != null) {
                     echo '<table class="table table-bordered table-striped table-hover text-center align-middle">
-                            <thead class="table-dark">
+                            <thead class="table-dark align-middle">
                                 <tr>
                                     <th>Nome</th>
                                     <th>CPF</th>

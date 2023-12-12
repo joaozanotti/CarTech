@@ -13,7 +13,7 @@ echo criaHeader("Clientes");
    
       if ($vetClientes != null) {
          echo '<table class="table table-bordered table-striped table-hover text-center align-middle" style="width: 90%;">
-                  <thead class="table-dark">
+                  <thead class="table-dark align-middle">
                      <tr>
                         <th>Nome</th>
                         <th>CPF</th>

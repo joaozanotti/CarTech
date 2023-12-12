@@ -24,7 +24,7 @@ function criaHeader($titulo, $funcao = "") {
 }
 
 function criarCss($titulo, $funcao) {
-    if ($titulo == "Home" || $funcao == "Editar") {
+    if ($titulo == "Home" || ($funcao == "Editar" || $funcao == "Filtrar")) {
         return '<link rel="stylesheet" href="../css/style.css">';
     } else {
         return '<link rel="stylesheet" href="../../css/style.css">';
@@ -32,7 +32,7 @@ function criarCss($titulo, $funcao) {
 }
 
 function criarIcone($titulo, $funcao) {
-    if ($titulo == "Home" || $funcao == "Editar") {
+    if ($titulo == "Home" || ($funcao == "Editar" || $funcao == "Filtrar")) {
         return '<link rel="icon" type="image/x-icon" href="../img/icone.png">';
     } else {
         return '<link rel="icon" type="image/x-icon" href="../../img/icone.png">';
@@ -58,7 +58,7 @@ function criarLinks($titulo, $funcao) {
                     </li>
                 </ul>';
 
-    } else if ($funcao == "Editar") {
+    } else if ($funcao == "Editar" || $funcao == "Filtrar") {
         return '<img src="../img/logobranca.png" alt="Logo da CarTech" width="80" class="py-2 ms-2">
                 </a>
                 <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
@@ -97,7 +97,7 @@ function criarLinks($titulo, $funcao) {
 }
 
 function criarNav($titulo, $funcao) {
-    if ($titulo == "Clientes" && $funcao == "Editar") {
+    if ($titulo == "Clientes" && ($funcao == "Editar" || $funcao == "Filtrar")) {
         return '<div class="px-3 border-bottom border-dark border-2 bg-secondary">
                     <div class="d-flex py-2 flex-wrap justify-content-center">
                         <div class="px-2">
@@ -145,7 +145,7 @@ function criarNav($titulo, $funcao) {
                     </div>
                 </div>';
 
-    } else if ($titulo == "Mecânicos" && $funcao == "Editar") {
+    } else if ($titulo == "Mecânicos" && ($funcao == "Editar" || $funcao == "Filtrar")) {
         return '<div class="px-3 border-bottom border-dark border-2 bg-secondary">
                     <div class="d-flex py-2 flex-wrap justify-content-center">
                         <div class="px-2">
@@ -193,7 +193,7 @@ function criarNav($titulo, $funcao) {
                     </div>
                 </div>';
 
-    } else if ($titulo == "Serviços" && $funcao == "Editar") {
+    } else if ($titulo == "Serviços" && ($funcao == "Editar" || $funcao == "Filtrar")) {
         return '<div class="px-3 border-bottom border-dark border-2 bg-secondary">
                     <div class="d-flex py-2 flex-wrap justify-content-center">
                         <div class="px-2">
@@ -241,7 +241,7 @@ function criarNav($titulo, $funcao) {
                     </div>
                 </div>';
                 
-    } else if ($funcao == "Editar") {
+    } else if ($funcao == "Editar" || $funcao == "Filtrar") {
         return '';
 
     } else {
