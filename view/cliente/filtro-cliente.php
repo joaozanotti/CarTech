@@ -39,11 +39,11 @@ echo criaHeader("Clientes");
             ?>
         </div>
     </div>
-    <div class="formulario me-5 d-flex flex-column align-items-center">
-        <h1 class="mb-3 me-5">Filtrar clientes</h1>
-        <form action="../filtrar.php?url=cliente" method="post" class="w-100 me-5">
-            <p>
-                <label for="cpf" class="form-label">CPF:</label>
+    <div class="formulario d-flex flex-column align-items-center">
+        <h1 class="mb-3 text-center w-75">Filtrar serviços dos clientes</h1>
+        <form action="../filtrar.php?url=cliente" method="post" class="w-75">
+            <p class="d-flex flex-column align-items-center">
+                <label for="cpf" class="form-label align-self-start">CPF:</label>
                 <input type="text" id="cpf" name="cpf" class="form-control border border-secondary" placeholder="Digite o CPF... (Apenas 14 dígitos)" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" required>
             </p>
             <p class="d-flex justify-content-center mt-4">
@@ -56,6 +56,8 @@ echo criaHeader("Clientes");
                         echo "<p class='form-error'>Erro! CPF do cliente inválido.</p>";
                     } else if ($msg == "erroPessoa") {
                         echo "<p class='form-error'>Cliente não encontrado.</p>";
+                    } else if ($msg == "erroServico") {
+                        echo "<p class='form-error'>Este cliente não solicitou nenhum serviço.</p>";
                     }
                 ?>
             </p>
