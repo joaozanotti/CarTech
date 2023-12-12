@@ -27,10 +27,11 @@ echo criaHeader("Serviços");
                   <tbody>';
 
             foreach ($vetServicos as $servico) {
+               $dataHora = date('d/m/Y H:i:s', strtotime($servico->getData()));
                echo '<tr>
                         <td>'.$servico->getTipo().'</td>
                         <td>R$'.$servico->getValor().'</td>
-                        <td>'.$servico->getData().'</td>
+                        <td>'.$dataHora.'</td>
                         <td>'.$servico->getTempo().'</td>
                         <td>'.$servico->getCliente()->getNome().'</td>
                         <td>'.$servico->getMecanico()->getNome().'</td>
