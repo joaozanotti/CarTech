@@ -1,8 +1,11 @@
 <?php
+// Requerindo as classes Cliente e Mecanico
 require_once 'Cliente.class.php';
 require_once 'Mecanico.class.php';
 
+// Criando a classe Servico (relação entre Cliente e Mecanico)
 class Servico {
+    // Definindo os atributos
     private $id_servico;
     private $tipo;
     private $valor;
@@ -11,11 +14,14 @@ class Servico {
     private Cliente $cliente;
     private Mecanico $mecanico;
 
+    // Criando o construtor
     function __construct($tipo = "", $valor = "", $data_hora = "", $tempo_duracao = "", $cliente, $mecanico) {
         $this->tipo = $tipo;
         $this->valor = $valor;
+        // Definindo a data como a atual, usando um comando sql, se não houver dados
         if ($data_hora == "") {
             $this->data_hora = 'NOW()';
+        // Definindo a data como ela mesma, se houver dados
         } else {
             $this->data_hora = $data_hora;
         }
@@ -24,6 +30,7 @@ class Servico {
         $this->mecanico = $mecanico;
     }
 
+    // Definindo os gets e sets
     function getId() {
         return $this->id_servico;
     }
@@ -77,6 +84,7 @@ class Servico {
         return $this->mecanico = $mecanico;
     }
 
+    // Definindo o toString para transformar os dados em string (juntamente com os dados do Cliente e do Mecanico)
     function toString() {
         return "Tipo: ". $this->tipo .
         "<br>Valor: ". $this->valor .

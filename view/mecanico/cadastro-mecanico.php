@@ -1,11 +1,19 @@
 <?php
+// Requerindo as funções de estruturação do html
 include '../../control/funcoes.php';
+
+// Recebendo a mensagem de resultado pelo GET
 $msg = @$_GET['result'];
 
+// Criando o header
 echo criaHeader("Mecânicos");
 ?>
+
+<!-- Criando o main -->
 <main class="d-flex flex-column align-items-center justify-content-center flex-grow-1 my-4">
+    <!-- Criando o formulário de cadastro -->
     <h1 class="mb-3">Cadastrar mecânicos</h1>
+    <!-- Enviando uma url pelo link para selecionar a funcionalidade no outro arquivo -->
     <form action="../cadastro.php?url=mecanico" method="post" class="w-25">
         <p>
             <label for="nome" class="form-label">Nome:</label>
@@ -41,6 +49,7 @@ echo criaHeader("Mecânicos");
         </p>
         <p>
             <?php
+                // Exibindo as mensagens de resultado
                 if ($msg == "erroInfo") {
                     echo "<p class='form-error'>Erro! Informações inválidas.</p>";
                 } else if ($msg == "erroPessoa") {
@@ -52,6 +61,8 @@ echo criaHeader("Mecânicos");
         </p>
     </form>
 </main>
+
 <?php
+// Criando o footer
 echo criaFooter();
 ?>

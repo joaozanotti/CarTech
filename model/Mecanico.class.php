@@ -1,11 +1,15 @@
 <?php
+// Requerindo a classe Pessoa
 require_once 'Pessoa.class.php';
 
+// Criando a classe Mecanico (subclasse de Pessoa)
 class Mecanico extends Pessoa {
+    // Definindo os atributos
     private $salario;
     private $cargo;
     private $especializacao;
 
+    // Criando o construtor
     function __construct($nome = "", $cpf = "", $telefone = "", $endereco = "", $salario = "", $cargo = "", $especializacao = "") {
         parent::__construct($nome, $cpf, $telefone, $endereco);
         $this->salario = $salario;
@@ -13,6 +17,7 @@ class Mecanico extends Pessoa {
         $this->especializacao = $especializacao;
     }
 
+    // Definindo os gets e sets
     function getSalario() {
         return $this->salario;
     }
@@ -34,6 +39,7 @@ class Mecanico extends Pessoa {
         return $this->especializacao = $especializacao;
     }
 
+    // Definindo o toString para transformar os dados em string (jutamente com os dados da superclasse Pessoa)
     function toString() {
         return parent::toString() .
             "<br>Salário: R$". $this->salario . 

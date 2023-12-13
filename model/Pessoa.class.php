@@ -1,11 +1,14 @@
 <?php
+// Criando a classe Pessoa
 class Pessoa {
+    // Definindo os atributos
     private $id_pessoa;
     private $nome;
     private $cpf;
     private $telefone;
     private $endereco;
 
+    // Criando o construtor
     function __construct($nome = "", $cpf = "", $telefone = "", $endereco = "") {
         $this->nome = $nome;
         $this->cpf = $cpf;
@@ -13,6 +16,7 @@ class Pessoa {
         $this->endereco= $endereco;         
     }
 
+    // Definindo os gets e sets
     function getId() {
         return $this->id_pessoa;
     }
@@ -48,6 +52,7 @@ class Pessoa {
         return $this->endereco = $endereco;
     }
 
+    // Definindo o toString para transformar os dados em string
     function toString() {
         return "Nome: ". $this->nome . 
             "<br>CPF: ". $this->cpf . 

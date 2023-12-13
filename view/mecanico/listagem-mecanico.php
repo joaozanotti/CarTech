@@ -1,17 +1,27 @@
 <?php
+// Requerindo as funções de estruturação do html e as classes de control
 require_once '../../control/public.php';
 require_once '../../control/funcoes.php';
+
+// Recebendo as mensagens de resultado pelo GET
 $msgExcluir = @$_GET['resultExcluir'];
 $msgEditar = @$_GET['resultEditar'];
 
+// Criando o header
 echo criaHeader("Mecânicos");
 ?>
+
+<!-- Criando o main -->
 <main class="d-flex flex-column align-items-center justify-content-center flex-grow-1 my-4">
+   <!-- Listando os mecânicos que estão cadastrados -->
    <h2 class="mb-4">Listagem de mecânicos</h2>
    <?php
+      // Buscando os dados de todos os mecânicos
       $vetMecanicos = $mecanicoControl->listarObj();
 
+      // Verificando se existem mecânicos cadastrados
       if ($vetMecanicos != null) {
+         // Exibindo os dados dos mecânicos
          echo '<table class="table table-bordered table-striped table-hover text-center align-middle" style="width: 90%;">
                   <thead class="table-dark align-middle">
                      <tr>
@@ -28,6 +38,7 @@ echo criaHeader("Mecânicos");
                   <tbody>';
             
             foreach ($vetMecanicos as $mecanico) {
+               // Criando as linhas e enviando uma url e um id pelo link para selecionar a funcionalidade no outro arquivo 
                echo '<tr>
                         <td>'.$mecanico->getNome().'</td>
                         <td>'.$mecanico->getCpf().'</td>
@@ -50,6 +61,7 @@ echo criaHeader("Mecânicos");
          echo '<p>Nenhum mecânico encontrado.</p>';
       }
 
+      // Exibindo as mensagens de resultado
       if ($msgExcluir == "erroInfo") {
          echo '<p class="form-error px-3">Erro! Este mecânico está cadastrado em algum serviço.</p>';
       } else if ($msgExcluir == "erroPessoa") {
@@ -61,6 +73,8 @@ echo criaHeader("Mecânicos");
       }
    ?>
 </main>
+
 <?php
+// Criando o footer
 echo criaFooter();
 ?>

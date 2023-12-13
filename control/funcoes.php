@@ -1,4 +1,5 @@
 <?php
+// Definindo a função que cria o cabeçalho
 function criaHeader($titulo, $funcao = "") {
     return '<!DOCTYPE html>
             <html lang="pt-br">
@@ -23,6 +24,7 @@ function criaHeader($titulo, $funcao = "") {
                 </header>';
 }
 
+// Definindo a função que cria o css
 function criarCss($titulo, $funcao) {
     if ($titulo == "Home" || ($funcao == "Editar" || $funcao == "Filtrar")) {
         return '<link rel="stylesheet" href="../css/style.css">';
@@ -31,6 +33,7 @@ function criarCss($titulo, $funcao) {
     }
 }
 
+// Definindo a função que cria o ícone da aba
 function criarIcone($titulo, $funcao) {
     if ($titulo == "Home" || ($funcao == "Editar" || $funcao == "Filtrar")) {
         return '<link rel="icon" type="image/x-icon" href="../img/icone.png">';
@@ -39,6 +42,7 @@ function criarIcone($titulo, $funcao) {
     }
 }
 
+// Definindo a função que cria os links principais
 function criarLinks($titulo, $funcao) {
     if ($titulo == "Home") {
         return '<img src="../img/logobranca.png" alt="Logo da CarTech" width="80" class="py-2 ms-2">
@@ -96,6 +100,7 @@ function criarLinks($titulo, $funcao) {
     }
 }
 
+// Definindo a função que cria a nav e os seus links
 function criarNav($titulo, $funcao) {
     if ($titulo == "Clientes" && ($funcao == "Editar" || $funcao == "Filtrar")) {
         return '<div class="px-3 border-bottom border-dark border-2 bg-secondary">
@@ -249,6 +254,7 @@ function criarNav($titulo, $funcao) {
     }
 }
 
+// Definindo a função que cria o footer
 function criaFooter() {
     return '<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 bg-dark mt-auto">
                 <p class="nav col-md-4 mb-0 px-5 text-white justify-content-start">MECÂNICA <span class="text-danger ms-1">CARTECH</span></p>

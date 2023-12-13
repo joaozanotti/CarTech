@@ -1,18 +1,28 @@
 <?php
+// Requerindo as funções de estruturação do html e as classes de control
 require_once '../../control/public.php';
 require_once '../../control/funcoes.php';
+
+// Recebendo a mensagem de resultado pelo GET
 $msg = @$_GET['result'];
 
+// Criando o header
 echo criaHeader("Clientes");
 ?>
+
+<!-- Criando o main -->
 <main class="d-flex align-items-center justify-content-around flex-grow-1 my-4">
     <div class="listagem ms-5">
+        <!-- Listando os clientes que estão cadastrados -->
         <div class="clientes d-flex flex-column align-items-center mb-4">
         <h2 class="mb-4">Clientes cadastrados</h2>
             <?php
+                // Buscando os dados de todos os clientes
                 $vetClientes = $clienteControl->listarObj();
 
+                // Verificando se existem clientes cadastrados
                 if ($vetClientes != null) {
+                    // Exibindo os dados dos clientes
                     echo '<table class="table table-bordered table-striped table-hover text-center align-middle">
                     <thead class="table-dark align-middle">
                         <tr>
@@ -40,7 +50,9 @@ echo criaHeader("Clientes");
         </div>
     </div>
     <div class="formulario d-flex flex-column align-items-center">
+        <!-- Criando o formulário de cadastro -->
         <h1 class="mb-3 text-center w-75">Filtrar serviços dos clientes</h1>
+        <!-- Enviando uma url pelo link para selecionar a funcionalidade no outro arquivo -->
         <form action="../filtrar.php?url=cliente" method="post" class="w-75">
             <p class="d-flex flex-column align-items-center">
                 <label for="cpf" class="form-label align-self-start">CPF:</label>
@@ -52,6 +64,7 @@ echo criaHeader("Clientes");
             </p>
             <p>
                 <?php
+                    // Exibindo as mensagens de resultado
                     if ($msg == "erroInfo") {
                         echo "<p class='form-error'>Erro! CPF do cliente inválido.</p>";
                     } else if ($msg == "erroPessoa") {
@@ -64,6 +77,8 @@ echo criaHeader("Clientes");
         </form>
     </div>
 </main>
+
 <?php
+// Criando o footer
 echo criaFooter();
 ?>
